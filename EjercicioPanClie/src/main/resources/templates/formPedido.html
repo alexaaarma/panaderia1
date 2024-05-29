@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>agregar</title>
+		<link rel="stylesheet" th:href="@{css/form.css}">
+	</head>
+	<body>
+		<form  method="post"  th:action="savePedidos"   th:object="${pedidos}">
+			<div class="fondo">
+			 <div  class="text-center">
+                <h1> Pedidos </h1>
+            </div>
+			<div  class="alin"> 
+                
+                <input class="img" src="imajes/puerquito.jpg" type="image" id="tipo-pan">
+                 <input class="img" src="imajes/concha.jpg" type="image" id="tipo-pan">
+                 <input class="img" src="imajes/donas.jpg" type="image" id="tipo-pan">
+            </div>
+            <div class="alin" > 
+               <input class="img" src="imajes/mantecadas.jpg" type="image" id="tipo-pan">
+                 <input class="img" src="imajes/orejas.jpg" type="image" id="tipo-pan">
+                 <input class="img" src="imajes/yoyos.jpg" type="image" id="tipo-pan">
+            </div> 
+            <div class="alin" > 
+                <input class="img" src="imajes/bolillo.png" type="image" id="tipo-pan">
+                <input class="img" src="imajes/cuernito.jpg" type="image" id="tipo-pan">
+                 <input class="img" src="imajes/baguette.jpg" type="image" id="tipo-pan">
+            </div>   
+		<div class="alin"> 
+                <div><label>Nombre Completo</label> </div>
+                <input type="text"  id="nombre" th:field="*{nombre}" class="input">
+                <input type="hidden"  id="id" class="input">
+            </div> 
+            <div class="alin"> 
+                <div> <label >Dia del pedido</label>  <label class="espacios"> Dia de entrega </label>  </div>
+                <input type="date" th:field="*{dia_pedido}" id="pedido" class="date">
+                <input type="date" th:field="*{dia_entrega}" id="entrega" class="date">
+            </div> 
+          
+            <div class="alin"> 
+                <div><label>Cantidad</label></div> 
+                <input type="text" th:field="*{cantidad}" id="cantidad" class="input">
+                 <input type="text" th:field="*{tipo_pan}" id="cantidad" class="input" placeholder="tipo de pan">
+            </div>  
+            
+            <div class="alin" > 
+                <div><label>Costo</label> </div>
+                <input type="text" th:field="*{costo}" id="costo" class="input">
+            </div>
+            <div class="alin" > 
+                <div><label>Anticipo</label></div>
+                <input type="text" th:field="*{anticipo}" id="anticipo" class="input">
+            </div>
+            <div class="text-center">
+				<button type="submit" id="ingreso"> Ingresar </button>
+			</div>   
+		</div>
+		</form>
+	</body>
+</html>

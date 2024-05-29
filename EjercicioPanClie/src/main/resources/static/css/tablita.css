@@ -1,0 +1,73 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 17px;
+}
+body{
+	
+    display: flex;
+    margin-top: 5%;
+    justify-content: center;
+     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMKH3c974uiksmcx4IT-IMk8gcQeX76jOetLP3Ht_d7g&s"); 
+	 background-repeat: no-repeat;
+	 
+	 background-size: cover;
+	 background-position: center;
+	 background-attachment: fixed;
+}
+.cont{
+    border: solid 1px rgba(255, 255, 255, 0.2);
+}
+table{
+	
+    color:#fff;
+    font-size: 14px;
+    table-layout: fixed;
+     border: solid 1px rgba(245, 245, 245, 0.1);
+    background: #605951;
+}
+thead{
+    background: rgba(255, 255, 255, 0.2);
+}
+th{
+    padding: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+td{
+    padding: 20px 15px;
+    border-bottom: solid 1px rgba(245, 245, 245, 0.2);
+}
+tbody tr{
+    cursor: pointer;
+}
+tbody tr:hover{
+    background: #5d544d;
+}
+button{
+	position: relative;
+	padding: 5px 10px;
+	background-color: #ad5c70;
+	border-radius: 10px;
+	cursor: pointer;
+}
+.tton{
+	padding: 5px 10px;
+	background-color: #ad5c70;
+	border-radius: 10px;
+	cursor: pointer;
+}
+h1{
+	color: black;
+}
+#ingreso{
+        position: absolute;
+        top: 80%;
+        left: 45%;
+        align-self: center;
+         margin-top: 20px; 
+          cursor: pointer;
+}
+
