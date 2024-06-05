@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<link rel="stylesheet" th:href="@{css/pedido.css}">
+	<link rel="stylesheet" th:href="@{css/boton.css}" type="text/css">
 	<title> ActualizarProducto </title>
 </head>
 <script th:src="@{js/jquery-3.7.1.min.js}"></script>
@@ -30,7 +31,11 @@
 			<br>
 			<br>
 			<div class="text-center">
-				<button type="submit" class="btn"> Agregar </button>
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
 			</div>
 		</form>
 	</div>
