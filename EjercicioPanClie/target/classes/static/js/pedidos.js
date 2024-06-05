@@ -4,26 +4,15 @@ $(document).ready(function(){
 	
 });
 
-function eliminarPedido(idPedidos){
+function eliminarPedidos(idPedidos){
 	
 	$.ajax({
 		url : "/eliminarPedidos",
 		contentType:"application/json",
 		data :JSON.stringify({id:idPedidos}),
 		type : "POST",
-		success:function(){window.location.herf = "pedidos"}
+		success:function(){window.location.href = "pedidos"}
 			
 	});
 	
 }
-	function actualizarPedidos(idPedidos){
-	
-	$.ajax({
-		url : "/actualizarPedidos",
-		contentType:"application/json",
-		data :JSON.stringify({id:idPedidos}),
-		type : "GET",
-		success:function(){}
-			
-	});
-	}
