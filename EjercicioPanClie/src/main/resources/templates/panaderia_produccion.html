@@ -1,0 +1,49 @@
+<!DOCTYPE html>  
+<html> 
+	<head>
+		<title>tabla produccion</title>
+		<link rel="stylesheet" th:href="@{css/tablita.css}">
+	</head>
+	<script th:src="@{js/jquery-3.7.1.min.js}"></script>
+	<script th:src="@{js/produccion.js}"></script>
+	<body>
+		
+		<table>
+			<caption>
+		<h1>Tabla de Producción</h1>
+		</caption>
+			<thead>
+
+			<tr>
+				<th>id</th>
+				<th>cantidad</th>
+				<th>fecha</th>
+				<th>caducidad</th>
+				<th>nombre de la materia</th>
+				<th>Accion</th>
+			</tr>
+			
+			</thead>
+			<tbody>
+				<tr th:each = "produccion : ${listaProduccion}">
+		       		<th th:text="${produccion.id}"></th>
+		       		<th th:text="${produccion.cantidad}"></th>
+		       		<th th:text="${produccion.fecha}"></th>
+		       		<th th:text="${produccion.caducidad}"></th>
+		       		<th th:text="${produccion.nombre_materia}"></th>
+		       		<th>    
+						   <a class="tton" th:href="@{/actualizarProduccion(id=${produccion.id})}">Editar</a>
+						   <a class="tton" th:onclick ='eliminarProduccion([[${produccion.id}]]);'>Eliminar</a>
+					       
+		    	</tr>
+		    
+		</tbody>
+		</table>
+
+		<form th:action="form" method="get">
+			 <div>
+			<button type="submit" id="form"> formulario </button>	
+			</div>
+		</form>
+	</body>
+</html>
