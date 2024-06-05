@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actualizar Asistencia</title>
+    <style>
+        body {
+            background-color: #cba075;
+            background-image: url('https://www.pastpan.com/upfiles/productes/Panaderias%20(10)_A5327.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #cba075;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ffd9ab;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ffd9ab;
+            color: #070707;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function setHoraLlegada() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('hora_llegada').value = `${hours}:${minutes}`;
+            document.getElementById('salida').disabled = false;
+        }
+
+        function enableSalida() {
+            document.getElementById('salida').disabled = false;
+        }
+
+        function setFechaActual() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            document.getElementById('fecha').value = `${year}-${month}-${day}`;
+        }
+
+        window.onload = function() {
+            setFechaActual();
+        };
+    </script>
+</head>
+<body>
+
+    <form th:action="@{/updateAsistencia}" method="post" th:object="${asistencia}" id="form">
+        <center>
+            <h1>Actualizar la Asistencia</h1>
+        </center>
+        <h3>
+            <input type="hidden" th:field="*{id}" id="id" name="id">
+        </h3>
+        <h3>
+            Ingresa tu Nombre:
+            <input type="text" th:field="*{nombre}" id="nombre" name="nombre">
+        </h3>
+        <h3>
+            Ingresa fecha:
+            <input type="date" th:field="*{fecha}" id="fecha" name="fecha" readonly>
+        </h3>
+        <h3>
+            Ingresa tu hora de llegada:
+            <input type="time" th:field="*{hora_llegada}" id="hora_llegada" name="hora_llegada" readonly>
+        </h3>
+        <h3>
+            Ingresa tu hora de salida:
+            <input type="time" th:field="*{salida}" id="salida" name="salida">
+        </h3>
+        <h3>
+            Ingresa tu cargo:
+            <select th:field="*{cargo}" id="cargo" name="cargo">
+                <option value="acomodar">Acomodar</option>
+                <option value="recoger">Recoger</option>
+                <option value="estar en cocina">Estar en cocina</option>
+                <option value="cajera">Cajera</option>
+                <option value="atender">Atender</option>
+            </select>
+        </h3>
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+</html>

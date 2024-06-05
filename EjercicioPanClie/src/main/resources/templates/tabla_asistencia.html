@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabla Asistencia</title>
+    <style>
+        body {
+            background-color: #d5e5ff;
+            background-image: url('https://media.elmostrador.cl/2019/04/Panaderia_variada-700x416.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+            background-color: #f2f2f2;
+        }
+        th, td {
+            border: 1px solid #9a8fc8;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #edd4be;
+            font-weight: bold;
+        }
+        button {
+            padding: 5px 10px;
+            background-color:	#ffd9ab;
+            color: #333;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+        li {
+            float: left;
+        }
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        li a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+    </style>
+    <script th:src="@{js/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{js/asistencia.js}"></script>
+</head>
+<body>
+    <center>
+        <h2>Tabla de Asistencias</h2>
+    </center>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Fecha</th>
+            <th>Hora de llegada</th>
+            <th>Salida</th>
+            <th>Cargo</th>
+            <th>Acciones</th>
+        </tr>
+        <tr class="table" th:each="asistencia : ${listaAsistencias}">
+            <td th:text = "${asistencia.id}"></td>
+            <td th:text = "${asistencia.nombre}"></td>
+            <td th:text = "${asistencia.fecha}"></td>
+            <td th:text = "${asistencia.hora_llegada}"></td>
+            <td th:text = "${asistencia.salida}"> </td>
+            <td th:text = "${asistencia.cargo}"></td>
+            <td>
+				<a class="button" th:href="@{/actualizarAsistencias(id=${asistencia.id})}">Editar</a>            
+				<a class="button" th:onclick='eliminarAsistencia([[${asistencia.id}]]);'>Eliminar</a>
+				
+			</td>
+        </tr>
+    </table>
+    <center>
+        <form th:action="@{/}" method="get">
+            <button type="submit" id="regresar">Regresar</button>
+        </form>
+    </center>
+</body>
+</html>
