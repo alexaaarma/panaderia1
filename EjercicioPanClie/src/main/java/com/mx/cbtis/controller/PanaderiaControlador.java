@@ -60,7 +60,7 @@ public class PanaderiaControlador {
 	}
  
  @PostMapping("/eliminarPedidos")
-	public ModelAndView eliminarLibro(@RequestBody Pedidos  pedidos) {
+	public ModelAndView eliminarPedidos(@RequestBody Pedidos  pedidos) {
 		System.out.println("El id del pedido es: "+ pedidos.getId());
 		RestTemplate template = new RestTemplate();
 		String urlservicebd = "http://localhost:8081/deletePedidos";
