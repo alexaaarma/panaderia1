@@ -32,8 +32,8 @@
 					<td th:text="${pedidos.costo}"> </td>
 					<td th:text="${pedidos.anticipo}">     </td>
 					<td>
-						<a class="tton"  > Editar</a>
-					<button class="tton" th:onclick ="eliminarPedidos([[${pedidos.id}]]);" > Eliminar </button> </td> 
+						<a class="tton" th:href ="@{/actualizarPedidos(id=${pedidos.id})}" > Editar</a>
+					<button class="tton" th:onclick="eliminarPedidos([[${pedidos.id}]]);">Eliminar</button> </td> 
 				</tr>
 				
 			</tbody>

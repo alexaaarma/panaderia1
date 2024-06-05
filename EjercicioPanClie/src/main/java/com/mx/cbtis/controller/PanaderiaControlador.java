@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -58,13 +59,25 @@ public class PanaderiaControlador {
 	}
  
  @PostMapping("/eliminarPedidos")
-	public ModelAndView eliminarLibro(@RequestBody Pedidos  pedidos) {
+	public ModelAndView eliminarPedidos(@RequestBody Pedidos  pedidos) {
 		System.out.println("El id del pedido es: "+ pedidos.getId());
 		RestTemplate template = new RestTemplate();
 		String urlservicebd = "http://localhost:8081/deletePedidos";
 		HttpEntity<Pedidos> request = new HttpEntity<Pedidos>(pedidos);
 		ResponseEntity<Integer> response = template.exchange(urlservicebd,HttpMethod.DELETE,request,Integer.class);
 		return new ModelAndView("redirect:/pedidos");
+	}
+
+@GetMapping("/actualizarPedidos")
+	public String updatePedidos(@RequestParam(value = "id") int id, Model modelo) {
+		RestTemplate template = new RestTemplate();
+		Map<String,Integer> params = new HashMap<String, Integer>();
+		params.put("id", id);
+		String urlservicebd = "http://localhost:8081/buscarPedido?id={id}";
+		Pedidos pedidos = template.getForObject( urlservicebd, Pedidos.class,params);
+		modelo.addAttribute("pedidos", pedidos);
+		
+		return"formPedido";
 	}
  
 }
