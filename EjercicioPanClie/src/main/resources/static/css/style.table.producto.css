@@ -1,0 +1,84 @@
+body{
+	background-image: url("../imagen/bake.png");
+	background-position: center center;
+	background-repeat: no-repeat;
+	
+}
+table {
+  table-layout: fixed;
+  width: 80%;
+  border-collapse: collapse;
+  border: 2px solid #9b6b43;
+  border-radius: .5rem;
+  background-color:white;
+  text-align: left;
+}
+
+thead{
+	background-color: #efcead;
+	border-bottom: solid 5px #9b6b43;
+}
+tr:nth-child(even){
+	background-color: #c98860;
+}
+
+thead th:nth-child(1) {
+  width: 25%;
+}
+
+thead th:nth-child(2) {
+  width: 25%;
+}
+
+thead th:nth-child(3) {
+  width: 25%;
+}
+
+thead th:nth-child(4) {
+  width: 25%;
+}
+
+
+
+th,
+td {
+  padding: 20px;
+}
+th {
+  letter-spacing: 2px;
+  font-family: "Times New Roman", cursive;
+  border: 1px solid #9b6b43;
+
+}
+
+td {
+	border: 1px solid #9b6b43;
+  letter-spacing: 1px;
+}
+
+nav{
+	max-width: 100%;
+	margin: auto;
+	  border-radius:.5rem;
+	background-color: black;
+	font-size: 20px;
+	margin-top: 50px;
+
+}
+
+.menu-horizontal{
+	list-style: none;
+	display: flex;
+	justify-content: space-around;
+}
+.menu-horizontal > li > a{
+	display: block;
+	padding: 15px 15px;
+	color: white;
+	text-decoration: none;
+	justify-content: space-around;
+}
+.menu-horizontal > li:hover{
+	background-color:saddlebrown;
+	  border-radius: .5rem;
+}

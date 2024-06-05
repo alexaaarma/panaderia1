@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<link rel="stylesheet" th:href="@{css/pedido.css}">
+	<title> AgregarProducto </title>
+</head>
+<script th:src="@{js/jquery-3.7.1.min.js}"></script>
+<script th:src="@{js/producto.js}"></script> 
+<center>
+<body >
+	<div class="container">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<label for="nombrePan"> Nombre del Pan </label>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad</label>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo</label>
+				<input type="number" min="4" max="80" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn"> Agregar </button>
+			</div>
+		</form>
+	</div>
+</body>
+</center>
+</html>
