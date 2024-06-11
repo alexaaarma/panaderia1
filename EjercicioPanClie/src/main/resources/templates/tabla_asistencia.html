@@ -28,7 +28,7 @@
         }
         button {
             padding: 5px 10px;
-            background-color:	#ffd9ab;
+            background-color: #ffd9ab;
             color: #333;
             border: none;
             border-radius: 5px;
@@ -74,17 +74,16 @@
             <th>Acciones</th>
         </tr>
         <tr class="table" th:each="asistencia : ${listaAsistencias}">
-            <td th:text = "${asistencia.id}"></td>
-            <td th:text = "${asistencia.nombre}"></td>
-            <td th:text = "${asistencia.fecha}"></td>
-            <td th:text = "${asistencia.hora_llegada}"></td>
-            <td th:text = "${asistencia.salida}"> </td>
-            <td th:text = "${asistencia.cargo}"></td>
+            <td th:text="${asistencia.id}"></td>
+            <td th:text="${asistencia.nombre}"></td>
+            <td th:text="${asistencia.fecha}"></td>
+            <td th:text="${asistencia.hora_llegada}"></td>
+            <td th:text="${asistencia.salida}"></td>
+            <td th:text="${asistencia.cargo}"></td>
             <td>
-				<a class="button" th:href="@{/actualizarAsistencias(id=${asistencia.id})}">Editar</a>            
-				<a class="button" th:onclick='eliminarAsistencia([[${asistencia.id}]]);'>Eliminar</a>
-				
-			</td>
+                <a class="button" th:href="@{/actualizarAsistencias(id=${asistencia.id})}">Editar</a>
+                <a class="button" th:onclick='eliminarAsistencia([[${asistencia.id}]]);'>Eliminar</a>
+            </td>
         </tr>
     </table>
     <center>

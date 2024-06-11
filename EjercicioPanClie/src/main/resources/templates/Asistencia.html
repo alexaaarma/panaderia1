@@ -15,7 +15,7 @@
         form {
             width: 50%;
             margin: 0 auto;
-            background-color: #cba075;
+            background-color: rgba(210, 180, 140, 0.8); /* Color café con transparencia */
             padding: 20px;
             border-radius: 10px;
         }
@@ -40,6 +40,13 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
     </style>
     <script>
         function setHoraLlegada() {
@@ -47,11 +54,6 @@
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             document.getElementById('hora_llegada').value = `${hours}:${minutes}`;
-            document.getElementById('salida').disabled = false;
-        }
-
-        function enableSalida() {
-            document.getElementById('salida').disabled = false;
         }
 
         function setFechaActual() {
@@ -62,6 +64,28 @@
             document.getElementById('fecha').value = `${year}-${month}-${day}`;
         }
 
+        function validateForm() {
+            const nombre = document.getElementById('nombre').value;
+            const horaLlegada = document.getElementById('hora_llegada').value;
+            let valid = true;
+
+            if (!nombre) {
+                document.getElementById('nombreError').innerText = "El nombre es requerido";
+                valid = false;
+            } else {
+                document.getElementById('nombreError').innerText = "";
+            }
+
+            if (!horaLlegada) {
+                document.getElementById('horaLlegadaError').innerText = "La hora de llegada es requerida";
+                valid = false;
+            } else {
+                document.getElementById('horaLlegadaError').innerText = "";
+            }
+
+            return valid;
+        }
+
         window.onload = function() {
             setFechaActual();
         };
@@ -69,17 +93,17 @@
 </head>
 <body>
 
-    <form th:action="@{saveAsistencia}" method="post" th:object="${asistencia}" id="form" >
+    <form th:action="@{saveAsistencia}" method="post" th:object="${asistencia}" id="form" onsubmit="return validateForm()">
         <center>
             <h1>Registro de Asistencia</h1>
         </center>
         <h3>
-            
-            <input type="hidden" fiel="*{id}"  id="id" name="id">
+            <input type="hidden" field="*{id}" id="id" name="id">
         </h3>
         <h3>
             Ingresa tu Nombre:
             <input type="text" field="*{nombre}" th:value="${nombre}" id="nombre" name="nombre">
+            <div id="nombreError" class="error"></div>
         </h3>
         <h3>
             Ingresa fecha:
@@ -88,10 +112,11 @@
         <h3>
             Ingresa tu hora de llegada:
             <input type="time" field="*{hora_llegada}" th:value="${hora_llegada}" id="hora_llegada" name="hora_llegada" onclick="setHoraLlegada()" readonly>
+            <div id="horaLlegadaError" class="error"></div>
         </h3>        
         <h3>
             Ingresa tu hora de salida:
-            <input type="time" field="*{salida}" th:value="${salida}" id="salida" name="salida" disabled onclick="enableSalida()">
+            <input type="time" field="*{salida}" th:value="${salida}" id="salida" name="salida" disabled>
         </h3>         
         <h3>
             Ingresa tu cargo:
@@ -103,11 +128,8 @@
                 <option value="atender">Atender</option>
             </select>
         </h3>
-		<button type="submit">Enviar</button>
-		</form>
-		
-       
-    
+        <button type="submit">Enviar</button>
+    </form>
 
 </body>
 </html>
