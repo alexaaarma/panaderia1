@@ -1,17 +1,56 @@
 body{
+	background-image: url("../imajes/paness.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+	
+}
+.containerM{
+	background-color: #f3e3d3(167,146,119, 0.9);
+	backdrop-filter: blur(0px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 3px solid black;
+	width: 300px;
+	height: 380px;
+	letter-spacing: 1.5px;
+	border-radius: .7rem;
+    float: left;
+    margin: 20px;
+
+}
+.containerD{
 	background-color: #f3e3d3;
+	border: 3px solid black;
+	width: 300px;
+	height: 380px;
+	letter-spacing: 1.5px;
+	border-radius: .7rem;
+    float: left;
+    margin: 20px;
+
 }
 .container{
 	background-color: #c98860;
 	border: 3px solid #9b6b43;
-	width: 500px;
-	height: 400px;
+	width: 300px;
+	height: 380px;
 	letter-spacing: 1.5px;
 	border-radius: .7rem;
+    float: left;
+    margin: 20px;
+
 }
 
 .form-control{
 	width: 200px;
-	height: 30px;
+	height: 20px;
 	
+}
+.pan{
+	padding: 35px;
+}
+
+
+img{
+	
+	border-radius: .7rem;
 }
