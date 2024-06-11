@@ -9,24 +9,37 @@
 <script th:src="@{js/producto.js}"></script> 
 <center>
 <body >
-	<div class="container">
+<div class="pan"> 
+	<div class="containerM">
 		
 		<form method="post" th:action="saveProducto" th:object="${producto}" >
 			<input type = "hidden" field ="*{id}" id="id">
 			
 			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/mantecadas.jpg"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
 				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
 				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
 			</div>
 			<br>
 			<div class="form-group">
-				<label for="cantidad"> Cantidad</label>
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
 				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
 			</div>
 			<br>
 			<div class="form-group">
-				<label for="costo"> Costo</label>
-				<input type="number" min="4" max="80" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
 			</div>
 			<br>
 			<br>
@@ -39,6 +52,52 @@
 			</div>
 		</form>
 	</div>
+	
+	
+	
+	<div class="containerD">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/donas.jpg"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+			</div>
+		</form>
+	</div>
+</div>
 </body>
 </center>
 </html>
