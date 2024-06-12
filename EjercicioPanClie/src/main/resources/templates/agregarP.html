@@ -3,14 +3,22 @@
 <head>
 	<link rel="stylesheet" th:href="@{css/pedido.css}">
 	<link rel="stylesheet" th:href="@{css/boton.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{css/regresar.css}" type="text/css">
 	<title> AgregarProducto </title>
 </head>
 <script th:src="@{js/jquery-3.7.1.min.js}"></script>
 <script th:src="@{js/producto.js}"></script> 
 <center>
 <body >
+	<nav>
+		<ul class="menu-horizontal">
+		<li>
+			<a class= "nav-link activate" aria-current="page" th:href="@{/producto}" href="#">Regresar</a>
+		</li>
+		</ul>
+	</nav>
 <div class="pan"> 
-	<div class="containerM">
+	<div class="containerP">
 		
 		<form method="post" th:action="saveProducto" th:object="${producto}" >
 			<input type = "hidden" field ="*{id}" id="id">
@@ -27,7 +35,7 @@
 			 <br>
 				<label for="nombrePan"> Nombre del Pan </label>
 				<br>
-				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan">
 			</div>
 			<br>
 			<div class="form-group">
@@ -55,7 +63,7 @@
 	
 	
 	
-	<div class="containerD">
+	<div class="containerP">
 		
 		<form method="post" th:action="saveProducto" th:object="${producto}" >
 			<input type = "hidden" field ="*{id}" id="id">
@@ -97,6 +105,309 @@
 			</div>
 		</form>
 	</div>
+	
+		<div class="containerP">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/concha.jpg"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="containerP">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/puerquito.jpg"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="containerP">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/orejas.jpg"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="containerP">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/yoyos.jpg"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="containerP">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/cuernito.jpg"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+			</div>
+		</form>
+	</div>
+	
+	<div class="containerP">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/bolillo.png"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="containerP">
+		
+		<form method="post" th:action="saveProducto" th:object="${producto}" >
+			<input type = "hidden" field ="*{id}" id="id">
+			
+			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/baguette.jpg"
+			 		width="150px"
+		 	 		height="120px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+				<label for="nombrePan"> Nombre del Pan </label>
+				<br>
+				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
+				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
+			</div>
+			<br>
+			<div class="form-group">
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+			</div>
+			<br>
+			<br>
+			<div class="text-center">
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+			</div>
+		</form>
+	</div>
+	
+	
 </div>
 </body>
 </center>
