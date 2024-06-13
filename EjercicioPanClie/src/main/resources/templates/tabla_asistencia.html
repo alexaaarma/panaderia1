@@ -5,7 +5,7 @@
     <style>
         body {
             background-color: #d5e5ff;
-            background-image: url('https://media.elmostrador.cl/2019/04/Panaderia_variada-700x416.jpg');
+            background-image: url('https://www.diariosanfrancisco.com.ar/wp-content/uploads/2019/04/Panader%C3%ADa.jpg');
             background-size: cover;
             background-repeat: no-repeat;
             background-attachment: fixed;
@@ -15,15 +15,16 @@
             border-collapse: collapse;
             width: 50%;
             margin: 20px auto;
-            background-color: #f2f2f2;
+            backdrop-filter: blur(20px); /* Aumenta la transparencia */
         }
         th, td {
             border: 1px solid #9a8fc8;
             padding: 8px;
             text-align: left;
+            background-color: rgba(255, 255, 255, 0.5); /* Aumenta la transparencia */
         }
         th {
-            background-color: #edd4be;
+            background-color: rgba(237, 212, 190, 0.5); /* Aumenta la transparencia */
             font-weight: bold;
         }
         button {
@@ -39,7 +40,7 @@
             margin: 0;
             padding: 0;
             overflow: hidden;
-            background-color: #333;
+            background-color: white;
         }
         li {
             float: left;
@@ -61,7 +62,7 @@
 </head>
 <body>
     <center>
-        <h2>Tabla de Asistencias</h2>
+        <h2>Asistencias registradas</h2>
     </center>
     <table>
         <tr>
