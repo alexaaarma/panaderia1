@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-	<link rel="stylesheet" th:href="@{css/pedido.css}">
+	<link rel="stylesheet" th:href="@{css/actualizarP.css}" type="text/css">
 	<link rel="stylesheet" th:href="@{css/boton.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{css/regresar.css}" type="text/css">
 	<title> ActualizarProducto </title>
 </head>
 <script th:src="@{js/jquery-3.7.1.min.js}"></script>
 <script th:src="@{js/producto.js}"></script> 
 <center>
 <body >
-	<div class="container">
+	<nav>
+		<ul class="menu-horizontal">
+		<li>
+			<a class= "nav-link activate" aria-current="page" th:href="@{/producto}" href="#">Regresar</a>
+		</li>
+		</ul>
+	</nav>
+	<div class="pan"> 
+	<div class="containerP">
 		
 		<form method="post" th:action="saveProducto" th:object="${producto}" >
 			<input type = "hidden" th:field ="*{id}" id="id">
 			
 			<div class="form-group"> 
+				<br>
+				<center>
+					<a>
+					<img src="/imajes/chef.jpg"
+			 		width="135px"
+		 	 		height="135px"> 
+			 		</a>	  
+				  </center>
+			 <br>
+	
 				<label for="nombrePan"> Nombre del Pan </label>
-				<input type="text" class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required/>
+				<br>
+				<select class="form-control" field="*{nombrePan}" id="nombrePan"  name="nombrePan" required>
+					<option value="cs"></option>
+        				<option value="Mantecada">Mantecada</option>
+       					<option value="Dona">Dona</option>
+       					<option value="Concha">Concha</option>
+        				<option value="Puerquito">Puerquito</option>
+        				<option value="Oreja">Oreja</option>
+        				<option value="Yoyos">Yoyos</option>
+        				<option value="Cuernito">Cuernito</option>
+        				<option value="Bolillo">Bolillo</option>
+        				<option value="Baguette">Baguette</option>
+      			</select>
 			</div>
 			<br>
-			<div class="form-group"></div>
-				<label for="cantidad"> Cantidad</label>
+			<div class="form-group">
+				<label for="cantidad"> Cantidad disponible</label>
+				<br>
 				<input type="text" class="form-control" field="*{cantidad}" id="cantidad" name="cantidad" required/>
 			</div>
 			<br>
 			<div class="form-group">
-				<label for="costo"> Costo</label>
-				<input type="number" min="4" max="80" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
+				<label for="costo"> Costo por Pan</label>
+				<br>
+				<input type="number" min="5" max="50" class="form-control" field="*{costo}" id="costo" name="costo" required/ >
 			</div>
 			<br>
 			<br>
