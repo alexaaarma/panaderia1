@@ -27,9 +27,7 @@
             -webkit-backdrop-filter: blur(10px); /* Apoyo para navegadores webkit */
         }
 
-        input[type="text"],
-        input[type="number"],
-        input[type="password"],
+     
         select {
             width: calc(100% - 20px);
             padding: 10px;
@@ -50,6 +48,41 @@
         h1 {
             font-family: 'Poetsen One', sans-serif;
             color: rgb(0, 0, 0);
+        }
+
+        .dialog {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .dialog .close-button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: rgb(182, 138, 99);
+            color: #070707;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
         }
     </style>
     <script>
@@ -78,10 +111,22 @@
             let total = precios[tipoDePan] * cantidad;
             document.getElementById('monto').value = total;
 
+            let cambio = 0;
             if (anticipo !== "") {
-                let cambio = anticipo - total;
+                cambio = anticipo - total;
                 document.getElementById('cambio').value = cambio >= 0 ? cambio : 0;
             }
+
+            // Display the results in the dialog
+            document.getElementById('total-amount').textContent = `Monto Total: $${total}`;
+            document.getElementById('change-amount').textContent = `Cambio: $${cambio >= 0 ? cambio : 0}`;
+            document.getElementById('dialog').style.display = 'block';
+            document.getElementById('dialog-overlay').style.display = 'block';
+        }
+
+        function closeDialog() {
+            document.getElementById('dialog').style.display = 'none';
+            document.getElementById('dialog-overlay').style.display = 'none';
         }
     </script>
 </head>
@@ -93,10 +138,10 @@
         <input type="hidden" name="id" th:field="*{id}" />
 
         <p>Nombre del cajero:</p>
-        <input type="text" name="cajero" th:field="*{cajero}" id="cajero" />
+        <input type="text" name="cajero"  th:field="*{cajero}" id="cajero" />
         
         <p>Tipo de pan:</p>
-        <select name="tipo_de_pan" th:field="*{tipo_de_pan}" id="tipo_de_pan">
+        <select name="tipo_de_pan"  th:field="*{tipo_de_pan}" id="tipo_de_pan">
             <option value="puerquito">Puerquitos</option>
             <option value="concha">Concha</option>
             <option value="donas">Donas</option>
@@ -109,20 +154,24 @@
         </select>
         
         <p>Cantidad:</p>
-        <input type="number" name="cantidad" th:field="*{cantidad}" id="cantidad"  min="0"/>
+        <input type="number" name="cantidad"  th:field="*{cantidad}" id="cantidad" min="0" oninput="calcularMonto()"/>
         
-        <p>Monto Total:</p>
-        <input type="number" name="monto" th:field="*{monto}" id="monto"  min="0" readonly disabled/>
+        <input type="hidden" name="monto"  th:field="*{monto}" id="monto"/>
         
         <p>Anticipo:</p>
-        <input type="number" name="anticipo" th:field="*{anticipo}" id="anticipo"  min="0" oninput="calcularMonto()"/>
+        <input type="number" name="anticipo"  th:field="*{anticipo}" id="anticipo" min="0" oninput="calcularMonto()"/>
 
-        <p>Cambio:</p>
-        <input type="number" name="cambio" th:field="*{cambio}" id="cambio"  min="0"  readonly disabled/>
+        <input type="hidden" name="cambio"  th:field="*{cambio}" id="cambio"/>
         
-        <button type="button" onclick="calcularMonto()">Calcular Monto</button>
         <button type="submit">Enviar</button>
-    
-	</form>
+    </form>
+
+    <div id="dialog-overlay" class="dialog-overlay" onclick="closeDialog()"></div>
+
+    <div id="dialog" class="dialog">
+        <p id="total-amount"></p>
+        <p id="change-amount"></p>
+        <button class="close-button" onclick="closeDialog()">Cerrar</button>
+    </div>
 </body>
 </html>

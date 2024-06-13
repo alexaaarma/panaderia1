@@ -27,6 +27,10 @@ import com.mx.cbtis.modelo.Venta;
 
 @Controller
 public class PanaderiaControlador {
+@GetMapping("/ventas")
+public String getventas_form() {
+		return "ventas_form";
+		}
  @GetMapping("/")
  public String getLogin() {
 		return "pedidosT";
@@ -129,7 +133,3 @@ public class PanaderiaControlador {
  		return "form_actualizar";
  	}
  }
-
-
-
-
