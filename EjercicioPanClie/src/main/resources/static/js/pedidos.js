@@ -8,17 +8,18 @@ $(document).ready(function(){
 	        const inputId = showButton[i].id
 	        let nuevaFuente = "";
 	        let precio = ""
+	        
 	         // Determinar la nueva fuente de la imagen según el input presionado
             switch (inputId) {
-                case "Puerquito":
+                case "puerquito":
                     nuevaFuente = "imajes/puerquito.jpg";
                     precio =5;
                     break;
-                case "Concha":
+                case "concha":
                     nuevaFuente = "imajes/concha.jpg";
                      precio =5;
                     break;
-                case "Dona":
+                case "dona":
                     nuevaFuente = "imajes/donas.jpg";
                      precio =7;
                     break;
@@ -65,7 +66,10 @@ $(document).ready(function(){
 function cambiarImagen(inputId, nuevaFuente) {
     const imagenDialog = document.querySelector("#imgP");
     imagenDialog.src = nuevaFuente;
-    
+     document.getElementById("tipo_de_pan").value = inputId;
+     document.getElementById("tipo_de_pan").value = inputId;
+     
+      calcularMonto();
 }
 
 function eliminarPedidos(idPedidos){
@@ -82,42 +86,42 @@ function eliminarPedidos(idPedidos){
 }
 
      function calcularMonto() {
+  		var cantidad = parseFloat(document.getElementById("cantidad").value);
+		var producto = document.getElementById("tipo_de_pan").value.toLowerCase();
 
-            const precios = {
-                "puerquito": 5,
-                "concha": 5,
-                "donas": 7,
-                "mantecadas": 7,
-                "orejas": 7,
-                "yoyo": 7,
-                "bolillo": 2,
-                "baguette": 10,
-                "cuernito": 5
-            };
-            let tipoDePan = document.getElementById('tipo_de_pan').value.toLowerCase();
-            let cantidad = document.getElementById('cantidad').value;
-            let anticipo = document.getElementById('anticipo').value;
-            if (precios[tipoDePan] === undefined || cantidad <= 0) {
+    // Definir los precios de los productos
+    var precios = {
+        "puerquito": 5,
+        "concha": 5,
+        "dona": 7,
+        "mantecada": 7,
+        "oreja": 7,
+        "yoyo": 7,
+        "bolillo": 2,
+        "cuernito": 5,
+        "baguette": 10
+    };
+
+	 if (precios[tipoDePan] === undefined || cantidad <= 0) {
+
                 alert("Tipo de pan no reconocido o cantidad inválida.");
-                return;
-            }
-            let total = precios[tipoDePan] * cantidad;
-            document.getElementById('costo').value = total;
-            let cambio = 0;
-            if (anticipo !== "") {
-                cambio = anticipo - total;
-                document.getElementById('cambio').value = cambio >= 0 ? cambio : 0;
-            }
-            // Display the results in the dialog
-            document.getElementById('costo').textContent = `Monto Total: $${total}`;
-            document.getElementById('change-amount').textContent = `Cambio: $${cambio >= 0 ? cambio : 0}`;
-            document.getElementById('dialog').style.display = 'block';
-            document.getElementById('dialog-overlay').style.display = 'block';
-        }
-        function closeDialog() {
-            document.getElementById('dialog').style.display = 'none';
-            document.getElementById('dialog-overlay').style.display = 'none';
 
-        }
+                return;
+
+            }
+
+
+   if (precios.hasOwnProperty(producto)) {
+        // Calcular el costo multiplicando el precio por la cantidad
+        var costo = cantidad * precios[producto];
+        
+        // Actualizar el valor del input de costo
+        document.getElementById("costo").value = costo;
+         document.getElementById("costo").value = costo;
+    } else {
+        // Si el producto no está en la lista de precios, mostrar un mensaje de error o manejarlo según sea necesario
+        console.error("El producto seleccionado no tiene un precio definido.");
+    }
+}
 
  

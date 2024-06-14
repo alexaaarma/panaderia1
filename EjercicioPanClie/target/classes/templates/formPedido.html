@@ -19,14 +19,14 @@
 					    <div class="container ">
 					        <div class="row tet">
 					            <div class="col">
-					                <h3>Puerquito $5</h3>
+					                <h3>Pedido</h3>
 					                <div class="row">
 					                    <div class="col">
 					                        <img class="img" src="" id="imgP">
 					                    </div>
 					                    <div class="col text-center">
-					                        <input type="text" id="tipo_de_pan" class="inpp" placeholder="Tipo de pan">
-					                        <input type="text" id="cantidad" class="inpp" placeholder="Cantidad" >
+					                        <input type="text" id="tipo_de_pan" class="inpp" placeholder="Tipo de pan" >
+					                        <input type="text" id="cantidad" class="inpp" placeholder="Cantidad" oninput="calcularMonto()" >
 					                        <input type="text" id="costo" class="inpp" placeholder="Costo">
 					                    </div>
 					                </div>
@@ -36,9 +36,9 @@
 					    <button class="button " onclick="this.parentElement.close()">Enviar</button>
 					</form>
 				  </dialog>
-      			   <input  class="img showButton" src="imajes/puerquito.jpg" type="image" id="Puerquito" >			
-				 <input  class="img showButton" src="imajes/concha.jpg" type="image" id="Concha" >
-                 <input class="img showButton" src="imajes/donas.jpg" type="image" id="Dona" >
+      			   <input  class="img showButton" src="imajes/puerquito.jpg" type="image" id="puerquito" >			
+				 <input  class="img showButton" src="imajes/concha.jpg" type="image" id="concha" >
+                 <input class="img showButton" src="imajes/donas.jpg" type="image" id="dona" >
             </div>
             <div class="alin" > 
                <input class="img showButton" src="imajes/mantecadas.jpg" type="image" id="mantecada" >
@@ -65,7 +65,7 @@
             <div class="alin"> 
                 <div><label>Cantidad</label></div> 
                 <input type="text" th:field="*{cantidad}" id="cantidad" class="input">
-                 <input type="text" th:field="*{tipo_pan}" id="tipo_de_pan" class="input" placeholder="Tipo de pan">
+                 <input type="text" th:field="*{tipo_pan}" id="tipo_de_panI" class="input" placeholder="Tipo de pan">
             </div>  
             
             <div class="alin" > 
