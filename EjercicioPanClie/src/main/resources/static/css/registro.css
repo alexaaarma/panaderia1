@@ -1,0 +1,132 @@
+      body
+{
+    width: 100%;
+    height: 100%;
+     display:flex;
+    justify-content:center;
+    align-items: center;
+    background-image: url('../IMG/pan7.jpg');
+
+    background-repeat: no-repeat;
+    background-size:cover;
+}
+
+input
+{
+	background-color: transparent;
+	border-radius: 40px;
+	border: 1px ridge rgb(0, 0, 0);
+}
+form
+{
+    width:400px;
+    height:500px;
+    position: absolute;
+    top: 10%;
+    left: 30%;
+    background-color: rgb(208, 169, 130);
+    justify-content:center;
+    border-radius: 20px;
+
+    box-shadow: 10px 4px 10px 10px rgb(41, 41, 41);
+    
+}
+img
+{
+    width:170px;
+    height:170px;
+    position: absolute;
+	top: 5%;
+	left: 31%;
+}
+
+div.formId
+{
+	position:absolute;
+    top: 200px;
+    left: 10%;
+     font-size:x-large;
+     
+}
+div.formNombre
+{
+	
+	position:relative;
+    top: 210px;
+    left: 25px;
+     font-size:x-large;
+}
+.name{
+	position:relative;
+    top: 10px;
+    left: 20px;
+}
+div.formCorreo
+{
+		
+	position:relative;
+    top:  40px;
+    left: 20px;
+     font-size:x-large;
+}
+div.formPassword
+{
+	position:absolute;
+    top:  120px;
+    left: 20px;
+     font-size:x-large;
+}
+div.insertar
+{
+	
+	position:relative;
+    top:  50%;
+    left: 83%;
+     font-size:x-large;
+}
+
+
+
+.ojitoC
+{
+	position: absolute;
+	top: 170px;
+	left:15%
+}
+.mos
+{
+	
+	position: absolute;
+	top: 170px;
+	left:7%
+}
+
+
+.btnInsertar {
+	border-radius: 20px;
+  background: #3498db;
+  border: 1px solid white;
+  box-shadow: 0px 2px 0 white, 2px 4px 6px #eee;
+  font-weight: 900;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: medium;
+  width: 120px;
+  height: 35px;
+  position: absolute;
+  top: 160px;
+  left:-200px ;
+  letter-spacing: 1px;
+  -webkit-transition: all 150ms linear;
+          transition: all 150ms linear;
+}
+
+.btnInsertar:hover {
+  background: #3498db;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.2);
+  color: #74e6e0;
+  text-decoration: none;
+  text-shadow: -1px -1px 0 #136a65;
+  -webkit-transition: all 250ms linear;
+          transition: all 250ms linear;
+}
