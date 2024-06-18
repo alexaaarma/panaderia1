@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poetsen+One&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('images/fondo.jpg');
+            background-size: cover; 
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        form {
+            width: 50%;
+            margin: 20px;
+            background-color: rgba(167, 146, 119, 0.7); /* Color de fondo con transparencia */
+            padding: 20px;
+            border-radius: 10px;
+            backdrop-filter: blur(0px); /* Aplica el desenfoque */
+            -webkit-backdrop-filter: blur(10px); /* Apoyo para navegadores webkit */
+        }
+
+        input[type="text"],
+        input[type="number"],
+        input[type="password"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #fff0ff;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #c7b0ff;
+            color: #070707;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        h1 {
+            font-family: 'Poetsen One', sans-serif;
+            color: rgb(0, 0, 0);
+        }
+
+        .dialog {
+            display: none;
+            position: fixed;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .dialog .close-button {
+            display: block;
+            margin: 0 auto;
+            padding: 10px 20px;
+            background-color: #c7b0ff;
+            color: #070707;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dialog-overlay {
+            display: none;
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+    </style>
+    <script>
+        function calcularMonto() {
+            const precios = {
+                "puerquito": 5,
+                "concha": 5,
+                "donas": 7,
+                "mantecadas": 7,
+                "orejas": 7,
+                "yoyo": 7,
+                "bolillo": 2,
+                "baguette": 10,
+                "cuernito": 5
+            };
+
+            let tipoDePan = document.getElementById('tipo_de_pan').value.toLowerCase();
+            let cantidad = document.getElementById('cantidad').value;
+            let anticipo = document.getElementById('anticipo').value;
+
+            if (precios[tipoDePan] === undefined || cantidad <= 0) {
+                alert("Tipo de pan no reconocido o cantidad inválida.");
+                return;
+            }
+
+            let total = precios[tipoDePan] * cantidad;
+            document.getElementById('monto').value = total;
+
+            let cambio = 0;
+            if (anticipo !== "") {
+                cambio = anticipo - total;
+                document.getElementById('cambio').value = cambio >= 0 ? cambio : 0;
+            }
+
+            // Display the results in the dialog
+            document.getElementById('total-amount').textContent = `Monto Total: $${total}`;
+            document.getElementById('change-amount').textContent = `Cambio: $${cambio >= 0 ? cambio : 0}`;
+            document.getElementById('dialog').style.display = 'block';
+            document.getElementById('dialog-overlay').style.display = 'block';
+        }
+
+        function closeDialog() {
+            document.getElementById('dialog').style.display = 'none';
+            document.getElementById('dialog-overlay').style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+    <form method="post" th:action="@{/saveVenta}" th:object="${venta}" id="form">
+        <center>
+            <h1> Actualizar Registro </h1>
+        </center>
+        <input type="hidden" name="id" field="*{id}" />
+
+        <p>Nombre del cajero:</p>
+        <input type="text" name="cajero" field="*{cajero}" id="cajero" />
+        
+        <p>Tipo de pan:</p>
+        <select name="tipo_de_pan" field="*{tipo_de_pan}" id="tipo_de_pan">
+            <option value="puerquito">Puerquitos</option>
+            <option value="concha">Concha</option>
+            <option value="donas">Donas</option>
+            <option value="mantecadas">Mantecadas</option>
+            <option value="orejas">Orejas</option>
+            <option value="yoyo">Yoyo</option>
+            <option value="bolillo">Bolillo</option>
+            <option value="cuernito">Cuernito</option>
+            <option value="baguette">Baguette</option>
+        </select>
+        
+        <p>Cantidad:</p>
+        <input type="number" name="cantidad" field="*{cantidad}" id="cantidad" min="0"/>
+        
+        <input type="hidden" name="monto" field="*{monto}" id="monto"/>
+        
+        <p>Anticipo:</p>
+        <input type="number" name="anticipo" field="*{anticipo}" id="anticipo" min="0" oninput="calcularMonto()"/>
+
+        <input type="hidden" name="cambio" field="*{cambio}" id="cambio"/>
+        
+        <button type="submit">Enviar</button>
+    </form>
+
+    <div id="dialog-overlay" class="dialog-overlay" onclick="closeDialog()"></div>
+
+    <div id="dialog" class="dialog">
+        <p id="total-amount"></p>
+        <p id="change-amount"></p>
+        <button class="close-button" onclick="closeDialog()">Cerrar</button>
+    </div>
+</body>
+</html>
