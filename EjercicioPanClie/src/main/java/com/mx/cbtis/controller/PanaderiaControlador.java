@@ -23,15 +23,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.mx.cbtis.modelo.Pedidos;
 import com.mx.cbtis.modelo.Produccion;
-import com.mx.cbtis.modelo.Venta;
 
 
 @Controller
 public class PanaderiaControlador {
-@GetMapping("/ventas")
-public String getventas_form() {
-		return "ventas_form";
-		}
  @GetMapping("/")
  public String getLogin() {
 		return "pedidosT";
@@ -72,65 +67,60 @@ public String getventas_form() {
 		HttpEntity<Pedidos> request = new HttpEntity<Pedidos>(pedidos);
 		ResponseEntity<Integer> response = template.exchange(urlservicebd,HttpMethod.DELETE,request,Integer.class);
 		return new ModelAndView("redirect:/pedidos");
+ }
+ 
+
+	@GetMapping("/form")
+	public String getProduccion(Model modelo) {
+		Produccion produccion = new Produccion();
+		modelo.addAttribute("produccion", produccion);
+		return "form_produccion";
 	}
 
-  @GetMapping("/tabla")
-  public String getventas_tabla() {
- 		return "ventas_tabla";
- 	}
-  
-  @GetMapping("/admin")
- 	public String getVenta(Model modelo) {
- 		RestTemplate template = new RestTemplate();
- 		String urlservicebd = "http://localhost:8081/buscarVentas";
- 		HttpHeaders headers = new HttpHeaders();
- 		headers.setContentType(MediaType.APPLICATION_JSON);
- 		Venta[] response = template.postForObject(urlservicebd,headers,Venta[].class);
- 		List<Venta> ventas = Arrays.asList(response);
- 		modelo.addAttribute("listaVentas", ventas);
- 		
- 		return "ventas_tabla";
- 	}
-  @PostMapping("/saveVenta")
- 	public ModelAndView setSaveVenta(@ModelAttribute Venta venta ) {
- 		RestTemplate template = new RestTemplate();
- 		String urlservicebd = "http://localhost:8081/addVenta";
- 		ResponseEntity<Integer> response = template.postForEntity(urlservicebd,venta,Integer.class);
- 		return new ModelAndView("redirect:/admin");
- 	}
-  
-  @GetMapping("/agregar_venta")
- 	public String getagregar_venta(Model modelo) {
- 		Venta venta = new Venta();
- 		modelo.addAttribute("venta" , venta);
- 		RestTemplate template = new RestTemplate();
- 		String urlservicebd = "http://localhost:8081/buscarVentas";
- 		HttpHeaders headers = new HttpHeaders();
- 		headers.setContentType(MediaType.APPLICATION_JSON);
- 		Venta[] response  = template.postForObject(urlservicebd,headers,Venta[].class);
- 		List<Venta> ventas = Arrays.asList(response);
- 		modelo.addAttribute("listaVentas" , ventas);
- 		return "ventas_tabla";
- 				
- }
-  @PostMapping("/eliminarVenta")
- 	public ModelAndView eliminarVenta(@RequestBody Venta venta) {
- 		System.out.println("El id de la venta es: " + venta.getId());
- 		RestTemplate template = new RestTemplate();
- 		String urlservicebd = "http://localhost:8081/deleteVenta";
- 		HttpEntity<Venta> request = new HttpEntity<Venta>(venta);
- 		ResponseEntity<Integer> response = template.exchange(urlservicebd, HttpMethod.DELETE, request, Integer.class);
- 		return new ModelAndView("redirect:/admin");
- 	}
-  
-  @GetMapping("/actualizarVenta")
- 	public String updateVenta(@RequestParam(value = "id") int id, Model modelo) {
- 		RestTemplate template = new RestTemplate();
- 		Map<String, Integer> params = new HashMap<String, Integer>();
- 		params.put("id", id);
- 		String urlservicebd = "http://localhost:8081/buscarVenta?id={id}";
- 		Venta venta = template.getForObject(urlservicebd, Venta.class, params);
- 		modelo.addAttribute("venta", venta);	
- 		return "form_actualizar";
- 	}
- }
+	@GetMapping("/produccion")
+	public String getProduccion1(Model modelo) {
+		RestTemplate template = new RestTemplate();
+		String urlservicebd = "http://localhost:8081/buscarProduccions";
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.APPLICATION_JSON);
+		Produccion[] response = template.postForObject(urlservicebd, headers, Produccion[].class);
+		List<Produccion> produccion = Arrays.asList(response);
+		modelo.addAttribute("listaProduccion", produccion);
+		return "panaderia_produccion";
+	}
+
+	@PostMapping("/saveProduccion")
+	public ModelAndView setSaveProduccion(@ModelAttribute Produccion produccion) {
+		RestTemplate template = new RestTemplate();
+		String urlservicebd = "http://localhost:8081/addProduccion";
+		ResponseEntity<Integer> response = template.postForEntity(urlservicebd, produccion, Integer.class);
+		return new ModelAndView("redirect:/produccion");
+	}
+
+	@PostMapping("/eliminarProduccion")
+	public ModelAndView eliminarProduccion(@RequestBody Produccion produccion) {
+		System.out.println("El id de la produccion es:" + produccion.getId());
+		RestTemplate template = new RestTemplate();
+		String urlservicebd = "http://localhost:8081/deleteProduccion";
+		HttpEntity<Produccion> request = new HttpEntity<Produccion>(produccion);
+		ResponseEntity<Integer> response = template.exchange(urlservicebd, HttpMethod.DELETE, request, Integer.class);
+		return new ModelAndView("redirect:/produccion");
+	}
+
+	@GetMapping("/actualizarProduccion")
+	public String updateProduccion(@RequestParam(value = "id") int id, Model modelo) {
+		RestTemplate template = new RestTemplate();
+		Map<String, Integer> params = new HashMap<String, Integer>();
+		params.put("id", id);
+		String urlservicebd = "http://localhost:8081/buscarProduccion?id={id}";
+		Produccion produccion = template.getForObject(urlservicebd, Produccion.class, params);
+		modelo.addAttribute("produccion", produccion);
+		return "form_produccion";
+
+	}
+}
+
+ 
+
+
+
