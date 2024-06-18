@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Asistencia</title>
+    <style>
+        body {
+            background-color: #cba075;
+            background-image: url('https://www.pastpan.com/upfiles/productes/Panaderias%20(10)_A5327.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: Arial, sans-serif;
+        }
+
+        form {
+            width: 50%;
+            margin: 0 auto;
+            background-color: rgba(210, 180, 140, 0.8); /* Color café con transparencia */
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="date"],
+        input[type="time"],
+        select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ffd9ab;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #ffd9ab;
+            color: #070707;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .error {
+            color: red;
+            font-size: 12px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        function setHoraLlegada() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('hora_llegada').value = `${hours}:${minutes}`;
+        }
+
+        function setFechaActual() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            document.getElementById('fecha').value = `${year}-${month}-${day}`;
+        }
+
+        function validateForm() {
+            const nombre = document.getElementById('nombre').value;
+            const horaLlegada = document.getElementById('hora_llegada').value;
+            let valid = true;
+
+            if (!nombre) {
+                document.getElementById('nombreError').innerText = "El nombre es requerido";
+                valid = false;
+            } else {
+                document.getElementById('nombreError').innerText = "";
+            }
+
+            if (!horaLlegada) {
+                document.getElementById('horaLlegadaError').innerText = "La hora de llegada es requerida";
+                valid = false;
+            } else {
+                document.getElementById('horaLlegadaError').innerText = "";
+            }
+
+            return valid;
+        }
+
+        window.onload = function() {
+            setFechaActual();
+        };
+    </script>
+</head>
+<body>
+
+    <form th:action="@{saveAsistencia}" method="post" th:object="${asistencia}" id="form" onsubmit="return validateForm()">
+        <center>
+            <h1>Registro de Asistencia</h1>
+        </center>
+        <h3>
+            <input type="hidden" field="*{id}" id="id" name="id">
+        </h3>
+        <h3>
+            Ingresa tu Nombre:
+            <input type="text" field="*{nombre}" th:value="${nombre}" id="nombre" name="nombre">
+            <div id="nombreError" class="error"></div>
+        </h3>
+        <h3>
+            Ingresa fecha:
+            <input type="date" field="*{fecha}" th:value="${fecha}" id="fecha" name="fecha" readonly>
+        </h3>        
+        <h3>
+            Ingresa tu hora de llegada:
+            <input type="time" field="*{hora_llegada}" th:value="${hora_llegada}" id="hora_llegada" name="hora_llegada" onclick="setHoraLlegada()" readonly>
+            <div id="horaLlegadaError" class="error"></div>
+        </h3>        
+        <h3>
+            Ingresa tu hora de salida:
+            <input type="time" field="*{salida}" th:value="${salida}" id="salida" name="salida" disabled>
+        </h3>         
+        <h3>
+            Ingresa tu cargo:
+            <select field="*{cargo}" th:value="${cargo}" id="cargo" name="cargo">
+                <option value="acomodar">Acomodar</option>
+                <option value="recoger">Recoger</option>
+                <option value="estar en cocina">Chef</option>
+                <option value="cajera">Cajera</option>
+                <option value="atender">Atender</option>
+            </select>
+        </h3>
+        <button type="submit">Enviar</button>
+    </form>
+
+</body>
+</html>
