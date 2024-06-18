@@ -67,7 +67,19 @@ public class PanaderiaControlador {
 		HttpEntity<Pedidos> request = new HttpEntity<Pedidos>(pedidos);
 		ResponseEntity<Integer> response = template.exchange(urlservicebd,HttpMethod.DELETE,request,Integer.class);
 		return new ModelAndView("redirect:/pedidos");
- }
+	}
+
+@GetMapping("/actualizarPedidos")
+	public String updatePedidos(@RequestParam(value = "id") int id, Model modelo) {
+		RestTemplate template = new RestTemplate();
+		Map<String,Integer> params = new HashMap<String, Integer>();
+		params.put("id", id);
+		String urlservicebd = "http://localhost:8081/buscarPedido?id={id}";
+		Pedidos pedidos = template.getForObject( urlservicebd, Pedidos.class,params);
+		modelo.addAttribute("pedidos", pedidos);
+		
+		return"formPedido";
+	}
  
 
 	@GetMapping("/form")
