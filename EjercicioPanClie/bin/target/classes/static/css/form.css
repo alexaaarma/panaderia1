@@ -1,0 +1,93 @@
+body{
+	
+	 padding:20px 20px;
+	 background-image:  linear-gradient(rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url("https://www.tiasaalimentos.com.mx/wp-content/uploads/2023/01/tipos-de-pan-dulce.jpg"); 
+	 background-repeat: no-repeat;
+	 background-size: cover;
+	 background-position: center;
+	 background-attachment: fixed;
+}
+
+.fondo {
+      backdrop-filter: blur(20px);
+        width: 1000px;
+        height: 1600px ;
+        padding:20px 20px;
+        margin: auto;
+        margin-top: 3%;
+        font-size: 14pt;
+        border-radius:  10px;
+        
+    }
+.input{
+		border-color: darkorange;
+		background: transparent;
+        width: 600px;
+        height: 35px;  
+        margin: 1.5%;    
+    }
+
+.img{
+	
+	padding:20px 20px;
+	 width: 250px;
+	 height: 250px;	
+	     
+}
+.date{
+	border-color: darkorange;
+		background: transparent;
+	 width: 250px;
+        height: 25px;  
+        margin: 2%;    
+}
+.espacios{
+	margin-left: 160px;
+}
+ .alin{
+        margin-left: 5%;
+        
+    }
+    
+        #ingreso{
+		padding: 10px 10px;
+	background-color: #ad5c70;
+	border-radius: 10px;
+	cursor: pointer;
+	left: 45%;
+	}
+	
+	
+	.button{
+	left: 45%;
+	padding: 7px 10px;
+	background-color: #ad5c70;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+
+#dialog{
+	background-color: #e6d5c1;
+	width: 670px;
+        height: 500px ;
+        padding:20px 20px;
+        margin: auto;
+        margin-top: 3%;
+        font-size: 14pt;
+        border-radius:  10px;
+        
+}
+.inpp{
+	padding:20px 20px;
+	border-color: darkorange;
+		background: transparent;
+        width: 300px;
+        height: 35px;  
+        margin: 1.5%;   
+}
+
+
+
+	
+	

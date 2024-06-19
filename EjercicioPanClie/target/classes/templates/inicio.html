@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   
+    <title>Menú de Opciones</title>
+	<link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>¿Quién soy?</h1>
+        <div class="option cliente">
+            <a href="#" 	th:href="@{/pedidos}">
+                Cliente
+                <img src="https://cdn.imgbin.com/11/10/8/imgbin-scalable-graphics-computer-icons-illustration-white-shopping-cart-icon-xm3dRTTvxmAPY7yaaWnC20fjZ.jpg" alt="Cliente">
+            </a>
+        </div>
+        <div class="option trabajador">
+            <a href="#" th:href="@{/login}">
+                Trabajador
+                <img src="https://w7.pngwing.com/pngs/453/840/png-transparent-toque-chef-s-uniform-computer-icons-chef-icon.png" alt="Trabajador">
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+

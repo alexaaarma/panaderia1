@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<link rel="stylesheet" th:href="@{css/style.table.producto.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{css/boton.css}" type="text/css">
+	<link rel="stylesheet" th:href="@{css/regresar.css}" type="text/css">
+	<title> Producto </title>
+</head>
+<script th:src="@{js/jquery-3.7.1.min.js}"></script>
+<script th:src="@{js/producto.js}"></script> 
+<body>
+
+	<nav>
+		<ul class="menu-horizontal">
+		<li>
+			<a class= "nav-link activate" aria-current="page" th:href="@{/}" href="#">Regresar</a>
+		</li>
+		</ul>
+	</nav>
+	<center>
+<table class="default">
+<thead>
+ <tr>
+	<th scope="col">ID</th>
+    <th>Pan</th>
+    <th>Cantidad</th>
+    <th>Costo</th>
+ </tr>
+</thead>
+<tbody>
+  <tr th:each = "producto : ${listaProducto}">
+    <td th:text="${producto.id} "> </td>
+    <td th:text="${producto.nombrePan} "> </td>
+    <td th:text="${producto.cantidad} "> </td>
+    <td th:text="${producto.costo} "> </td>
+ 	
+ 	<td class="text-center">
+		 <a th:onclick="eliminarProducto([[${producto.id}]]);">
+			<img src="/imajes/borrar.png"
+			 width="25px"
+		 	 height="25px"> 
+		 </a>	
+		 		 
+		 <a th:href="@{/actualizarProducto(id=${producto.id})}">
+		 <img src="/imajes/editar.png"
+		 width="25px"
+		 height="25px"> 
+		 </a>
+
+		 
+	 </td>
+  </tr>
+
+  <tr>
+
+    <td> </td>
+    <td> </td>
+    <td> </td>
+    <td> </td>
+
+  </tr>
+
+ 
+ </tbody>
+</table>
+
+<br>
+		<form th:action="@{/agregarP}" method="get">
+			<div class="text-center">
+				
+				<button type="submit" class="btn">
+					<span class="transition"></span>
+					<span class="gradient"></span>
+					<span class="label">Agregar</span>
+				</button>
+				</form>
+				<a 	class="tton"	th:href="@{/menu}" href="#">Menu</a>
+			</div>
+		
+		
+		
+</center>
+
+</body>
+</html>

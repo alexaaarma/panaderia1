@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html xmlns;th="http://www.thymeleaf.org">
+
+<head>
+        <link rel="stylesheet" th:href="@{css/login.css}">
+        <title> Login </title>
+ 
+</head>
+
+     <script th:src="@{js/login.js}"></script>
+     <script th:src="@{js/jquery-3.7.1.min.js}" ></script>
+    <script th:src="@{img/usuario1.png}"></script>
+    
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+     <script th:src="@{img/pan.jpg}"></script>
+ <script th:src="@{img/ojitoCerrado.png}" ></script>
+     <script th:src="@{img/ojitoAbierto.png}" ></script>
+     <script th:src="@{img/cafe1.gif}" ></script>
+ 	  <script th:src="@{img/correo1.png}" ></script>
+ 	  <script th:src="@{img/bloquear.png}" ></script>
+ 			    
+	<section>  
+
+ <body style="width:100%; height:100%;"  >
+    <div class="container">
+        <form >
+			<img  class="usuario" src="img/usuario1.png"  >
+            
+		<img  class="pan" src="img/pan.jpg"  >
+            
+            <div class="form-groupe">
+				<img class="icon" src="img/correo1.png" style="width: 28px; height: 28px;position: absolute;top: 49%;left: 37px;">
+                <label class="correo" for="email">Correo Electronico</label>
+                
+                <input type="email" class="form-control" id="email" name="email" placeholder="Escribe tu correo">
+                    
+            </div>
+            <div class="form-group">
+				<img  class="icon" src="img/bloquear.png"  style="width: 28px; height: 28px;position: absolute;top: 65%;left: 37px;">
+                <label class="group" for="password">Contraseña</label>
+                
+                <input type="password" class="form-controlP" id="password" name="password" placeholder="Escribe tu contrasena">
+             
+            </div>
+            <div class="box-visible">
+                <input type="checkbox" onchange="mostrar()" id="visible">
+                <img class="ojitoC" id="ce"  th:src="@{img/ojitoCerrado.png}"  style="width: 35px; ">
+                 <img class="ojitoA" id="ab" th:src="@{img/ojitoAbierto.png}"  style="width: 35px; display: none;">
+				  </div>
+               
+            <button type="button" onclick="validar()" class="btn-primary">Iniciar Sesion</button>
+          	
+             
+			
+            
+
+           <div>
+		   </div>
+          
+         <label class="o" >No tienes cuenta?</label><a href="/registro" class="registro">Registrate Aqui</a>
+        </form>
+    </div>
+
+   
+ </body>
+  </section>	  
+
+</html>

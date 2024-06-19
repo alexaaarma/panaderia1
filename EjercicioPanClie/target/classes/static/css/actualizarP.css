@@ -1,0 +1,26 @@
+body{
+	background-image: url("../imajes/paness.jpg");
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+.containerP {
+    background-color: rgba(167, 146, 119, 0.8);
+    border: 15px solid transparent; 
+    width: 320px;
+    height: 380px;
+    letter-spacing: 1.5px;
+    border-radius: 1rem;
+    float: none;
+    margin: 20px;
+    box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.8); 
+}
+.form-control{
+	width: 200px;
+	height: 20px;
+	
+}
+
+img{
+	
+	border-radius: 1.5rem;
+}

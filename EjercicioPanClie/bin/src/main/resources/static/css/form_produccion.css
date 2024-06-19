@@ -1,0 +1,45 @@
+*{
+    margin:1%;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body{
+    margin-top: 5%;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/012/875/118/non_2x/bread-background-various-types-and-forms-of-delicious-fragrant-bread-on-white-wooden-boards-with-scattered-seeds-of-flax-sesame-oats-photo.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    width: 100%;
+	height:100%;
+}
+h2{
+	font-size: 50px;
+	padding: 20px 20px;
+	font-family: Times New Romana; 
+  }
+.fondo{
+	background-color: navajowhite;
+	width: 400px;
+	height: 450px;
+	padding: 20px 20px;
+	margin-top:5%;
+	font-size:14pt;
+	border-radius:10px;
+	margin-left: 54%;
+	
+}
+.jija{
+	font-family: Times New Romana;
+}
+input{
+	border-color: rgb(255, 128, 0);
+	background: transparent;
+}
+button{
+	width: 80px;
+	height:30px;
+	background-color:#f9ceb0;
+}

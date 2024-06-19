@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+        <link rel="stylesheet" th:href="@{css/registro.css}">
+        <title> Registro </title>
+</head>
+     <script th:src="@{JS/registro.js}"></script>
+     <script th:src="@{js/jquery-3.7.1.min.js}" ></script>
+     
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+ <script th:src="@{img/ojitoCerrado.png}" ></script>
+     <script th:src="@{img/ojitoAbierto.png}" ></script>
+ 	  <script th:src="@{img/correo1.png}" ></script>
+ 	  <script th:src="@{img/bloquear.png}" ></script>
+     <script th:scr="@{img/volver.png}"></script>
+     <script th:scr="@{img/agregarUsuario.png}"></script>
+     
+     <script th:scr="@{img/cafe1.gif}"></script>
+ <body style="width:100%; height:100%;" >
+	 
+   
+    <div class="container">
+
+         <form  method="post" action="/saveUsuario" object="${usuario}">
+			 <img src="img/agregarUsuario.png"  >
+            </img>
+           <div class="formid">
+			   <input type="hidden" id="id"  name="id" field="*{id}"  />
+		   </div>
+            <div class="formNombre">
+                <label class="name" for="nombre">Nombre</label>
+                <input class="name" type="text" name="nombre" id="nombre"  field="*{nombre}" placeholder="Escribe tu Nombre"  size="23"/>
+
+            
+              <div class="formCorreo">
+				  <img class="icon" src="img/correo1.png" style="width: 28px; height: 28px;position: absolute;top: 10%;left: 290px;">
+              
+                <label for="Correo">Correo </label>
+                <input type="text" class="controlCorreo"  field="*{correo}" name="correo" id="correo"  placeholder="Escribe tu correo">
+                    
+           </div>
+              <div class="formPassword">
+				  <img  class="icon" src="img/bloquear.png"  style="width: 28px; height: 28px;position: absolute;top: 10%;left: 290px;">
+              
+                <label for="Password">Contraseña</label>
+                <input type="password" class="controlPassword"  field="*{contrasena}"name="contrasena" id="contrasena"  placeholder="Escribe tu contraseña ">
+                    
+           </div>
+         <div class="box-visible">
+                <input class="mos" type="checkbox" onchange="mostrar()" id="visible">
+                <img class="ojitoC" id="ce"  th:src="@{img/ojitoCerrado.png}"  style="width:35px;height: 35px;">
+                 <img class="ojitoC" id="ab" th:src="@{img/ojitoAbierto.png}"  style="width: 35px;height: 35px; display: none;">
+				  </div>
+           <div class="insertar">
+		
+				<button type="button"  onclick="validar()" id="agrega" class="btnInsertar ">Agregar</button>
+		   </div>
+            <a href="/login" class="regresar"><img src="img/volver.png" style="width:30px;height: 30px;position: absolute; top:210px;left: 15px;"></a>
+           
+          
+           
+          
+        </form>
+    </div>
+   
+ </body>
+
+</html>

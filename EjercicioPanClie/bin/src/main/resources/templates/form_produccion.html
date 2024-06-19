@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>formulario de produccion</title>
+	<link rel="stylesheet" th:href="@{css/form_produccion.css}">
+	
+</head>
+<body>
+<form method="post" th:action="saveProduccion" th:object="${produccion}">
+	<div class="fondo jija">
+<div>
+	<h2>Registro de Producción</h2>
+</div>
+<div>
+	
+	<input type="hidden" id="id"    th:field="*{id}">	
+</div>
+<div>
+	<label>cantidad</label>
+	<input type="text" id="cantidad" th:field="*{cantidad}" >
+</div>
+<div>
+	<label>fecha</label>
+	<input type="date" id="fecha"    th:field="*{fecha}">
+</div>
+<div>
+	<label>caducidad</label>
+	<input type="date" id="caducidad"  th:field="*{caducidad}">
+</div>
+<div>
+	<label> materia</label>
+	<input type="text" id="nombre_materia" th:field="*{nombre_materia}">
+</div>
+<center>
+<div>
+<button type="submit" id="jaja"> Registrar </button> 
+</div>
+</center>
+</div>
+</form>
+
+</body>
+</html>

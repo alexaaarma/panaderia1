@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poetsen+One&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background-image: url('images/fondo_tabla.jpg');
+			background-size: cover; 
+			font-family: Arial, sans-serif;
+			margin: 0;
+			padding: 0;
+			height: 100vh;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.form {
+			width: 50%;
+			margin: 20px;
+			background-color: rgba(167, 146, 119, 0.7); /* Color de fondo con transparencia */
+			padding: 20px;
+			border-radius: 10px;
+			backdrop-filter: blur(0px); /* Aplica el desenfoque */
+			-webkit-backdrop-filter: blur(10px); /* Apoyo para navegadores webkit */
+		}
+
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			margin: 20px auto;
+			background-color: #f2f2f2;
+		}
+		th, td {
+			border: 1px solid #9a8fc8;
+			padding: 8px;
+			text-align: left;
+		}
+		h1 {
+			font-family: 'Poetsen One', sans-serif;
+			color: rgb(0, 0, 0);
+		}
+		th {
+			background-color: #edd4be;
+			font-weight: bold;
+		}
+		button {
+			padding: 5px 10px;
+			background-color:#ffaf95;
+			color: #fff;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.tton {
+					padding: 5px 10px;
+					background-color:#ffaf95;
+					color: #fff;
+					border: none;
+					border-radius: 5px;
+					cursor: pointer;
+				}
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+		}
+		li {
+			float: left;
+		}
+		li a {
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+		li a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+	</style>
+	<script th:src="@{js/jquery-3.7.1.min.js}"></script>
+	<script th:src="@{js/ventas.js}"></script>
+	<title>
+		Tabla Libro
+	</title>
+</head>
+<body>
+	<div class="form">
+		<center>
+			<h1>Registro de Ventas de Día</h1>
+		</center>
+		<div>
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>Nombre de cajero</th>
+					<th>Tipo de pan</th>
+					<th>Cantidad</th>
+					<th>Monto</th>
+					<th>Anticipo</th>
+					<th>Cambio</th>
+					<th>Botones</th>
+				</tr>
+
+				<tr th:each="venta : ${listaVentas}">
+					<td th:text="${venta.id}"></td>
+					<td th:text="${venta.cajero}"></td>
+					<td th:text="${venta.tipo_de_pan}"></td>
+					<td th:text="${venta.cantidad}"></td>
+					<td th:text="${venta.monto}"></td>
+					<td th:text="${venta.anticipo}"></td>
+					<td th:text="${venta.cambio}"></td>
+
+					<td>
+						<a th:onclick="eliminarVenta([[${venta.id}]]);">Eliminar</a>
+						<a th:href="@{/actualizarVenta(id=${venta.id})}">Editar</a>
+					</td>			
+				</tr>        	        
+			</table>
+			<form 			th:action="@{/ventas}" method="get">
+		</div>
+		<center>
+			<button type="submit"  id="regresar">Formulario</button>
+			</form>
+			<a 	class="tton"	th:href="@{/menu}" href="#">Menu</a>
+		</center>
+		
+	</div>
+</body>
+</html>

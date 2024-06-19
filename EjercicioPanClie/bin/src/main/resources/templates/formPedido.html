@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>agregar</title>
+		<link rel="stylesheet" th:href="@{css/form.css}">
+		<link rel="stylesheet" th:href="@{css/bootstrap.css}">
+	</head>
+	<script th:src="@{js/jquery-3.7.1.min.js}"></script>
+      <script th:src="@{js/pedidos.js}"></script>
+	<body>
+		
+			<div class="fondo">
+			 <div  class="text-center">
+                <h1> Pedidos </h1>
+            </div>
+			<div  class="alin">       			
+      			 <dialog id="dialog" >
+					<form>
+					    <div class="container ">
+					        <div class="row tet">
+					            <div class="col">
+					                <h3>Pedido</h3>
+					                <div class="row">
+					                    <div class="col">
+					                        <img class="img" src="" id="imgP">
+					                    </div>
+					                    <div class="col text-center">
+					                        <input type="text" id="tipo_de_pan" class="inpp" placeholder="Tipo de pan" >
+					                        <input type="text" id="cantidad" class="inpp" placeholder="Cantidad" oninput="calcularMonto()" >
+					                        <input type="text" id="costo" class="inpp" placeholder="Costo">
+					                    </div>
+					                </div>
+					            </div>
+					        </div>
+					    </div>
+					    <button class="button " onclick="this.parentElement.close()">Enviar</button>
+					</form>
+				  </dialog>
+      			   <input  class="img showButton" src="imajes/puerquito.jpg" type="image" id="puerquito" >			
+				 <input  class="img showButton" src="imajes/concha.jpg" type="image" id="concha" >
+                 <input class="img showButton" src="imajes/donas.jpg" type="image" id="dona" >
+            </div>
+            <div class="alin" > 
+               <input class="img showButton" src="imajes/mantecadas.jpg" type="image" id="mantecada" >
+                 <input class="img showButton" src="imajes/orejas.jpg" type="image" id="oreja" >
+                 <input class="img showButton" src="imajes/yoyos.jpg" type="image" id="yoyo" >
+            </div> 
+            <div class="alin" > 
+                <input class="img showButton" src="imajes/bolillo.png" type="image" id="bolillo" >
+                <input class="img showButton" src="imajes/cuernito.jpg" type="image" id="cuernito" >
+                 <input class="img showButton" src="imajes/baguette.jpg" type="image" id="baguette" value="cuernito">
+            </div>  
+            <form  method="post"  th:action="savePedidos"   th:object="${pedidos}"> 
+		<div class="alin"> 
+                <div><label>Nombre Completo</label> </div>
+                <input type="text"  id="nombre" th:field="*{nombre}" class="input">
+                <input type="hidden"  id="id" class="input"  th:field="*{id}">
+            </div> 
+            <div class="alin"> 
+                <div> <label >Dia del pedido</label>  <label class="espacios"> Dia de entrega </label>  </div>
+                <input type="date" th:field="*{dia_pedido}" id="pedido" class="date">
+                <input type="date" th:field="*{dia_entrega}" id="entrega" class="date">
+            </div> 
+          
+            <div class="alin"> 
+                <div><label>Cantidad</label></div> 
+                <input type="text" th:field="*{cantidad}" id="cantidad" class="input">
+                 <input type="text" th:field="*{tipo_pan}" id="tipo_de_panI" class="input" placeholder="Tipo de pan">
+            </div>  
+            
+            <div class="alin" > 
+                <div><label>Costo</label> </div>
+                <input type="text" th:field="*{costo}" id="costo" class="input">
+            </div>
+            <div class="alin" > 
+                <div><label>Anticipo</label></div>
+                <input type="text" th:field="*{anticipo}" id="anticipo" class="input">
+            </div>
+            <div class="text-center">
+				<button type="submit" id="ingreso"> Comprar </button>
+			</div>
+			   
+		</div>
+		</form>
+	</body>
+</html>
