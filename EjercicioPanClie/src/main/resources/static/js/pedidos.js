@@ -98,7 +98,7 @@ function eliminarPedidos(idPedidos){
         "oreja": 7,
         "yoyo": 7,
         "bolillo": 2,
-        "cuernito": 5,
+        "cuernito": 5, 
         "baguette": 10
     };
 
