@@ -9,7 +9,7 @@ body{
     display: flex;
     margin-top: 5%;
     justify-content: center;
-    background-image: url(../img/imagentabla.jpg);
+    background-image: url(../imajes/imagentabla.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -69,6 +69,7 @@ button{
 	background-color: #ecc395;
 	border-radius: 10px;
 	cursor: pointer;
+	
 }
 
 h1{
@@ -79,5 +80,11 @@ h1{
         position: absolute;
         top: 60%;
         left: 45%;
+        align-self: center;
+}
+#ingre{
+        position: absolute;
+        top: 60%;
+        left: 54%;
         align-self: center;
 }

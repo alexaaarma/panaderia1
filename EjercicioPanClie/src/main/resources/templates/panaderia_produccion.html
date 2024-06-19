@@ -2,7 +2,7 @@
 <html> 
 	<head>
 		<title>tabla produccion</title>
-		<link rel="stylesheet" th:href="@{css/tablita.css}">
+		<link rel="stylesheet" th:href="@{css/tablitas.css}">
 	</head>
 	<script th:src="@{js/jquery-3.7.1.min.js}"></script>
 	<script th:src="@{js/produccion.js}"></script>
@@ -42,8 +42,10 @@
 
 		<form th:action="form" method="get">
 			 <div>
-			<button type="submit" id="form"> formulario </button>	
+			<button type="submit" id="form"> formulario </button>
+			</form>	
+			<a 	class="tton" id="ingre" th:href="@{/menu}" href="#">Menu</a>
 			</div>
-		</form>
+		
 	</body>
 </html>

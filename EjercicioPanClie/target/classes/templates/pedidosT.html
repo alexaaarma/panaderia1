@@ -3,10 +3,15 @@
 	<head>
 		<title>Pedidos</title>
 		 <link rel="stylesheet" th:href="@{css/tablita.css}">
+		
 	</head>
 	<script th:src="@{js/jquery-3.7.1.min.js}"></script>
       <script th:src="@{js/pedidos.js}"></script>
+	  <link rel="stylesheet" th:href="@{css/menu.css}">
 	<body>
+		<div>
+		
+		   <div>
 		<table>
 			<thead>
 				<tr >
@@ -40,9 +45,10 @@
 			<form th:action="formi" method="get">
 		<div >
 			<button type="submit" id="ingreso"> Agregar</button>
-		</div>
 		</form>
+		<a 	class="tton" id="ingre" th:href="@{/menu}" href="#">Menu</a>
 		</table>
-		
+		</div>
+		</div>
 	</body>
 </html>

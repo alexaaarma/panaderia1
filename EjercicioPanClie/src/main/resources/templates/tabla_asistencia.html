@@ -35,6 +35,15 @@
             border-radius: 5px;
             cursor: pointer;
         }
+		.tton {
+			margin: 10px;
+		           padding: 5px 10px;
+		           background-color: #ffd9ab;
+		           color: #333;
+		           border: none;
+		           border-radius: 5px;
+		           cursor: pointer;
+		       }
         ul {
             list-style-type: none;
             margin: 0;
@@ -88,9 +97,10 @@
         </tr>
     </table>
     <center>
-        <form th:action="@{/}" method="get">
+        <form th:action="@{/as}" method="get">
             <button type="submit" id="regresar">Regresar</button>
         </form>
+		<a 	class="tton"	th:href="@{/menu}" href="#">Menu</a>
     </center>
 </body>
 </html>
