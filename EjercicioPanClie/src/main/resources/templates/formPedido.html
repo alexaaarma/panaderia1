@@ -8,6 +8,7 @@
 		
 	</head>
 	<script th:src="@{js/jquery-3.7.1.min.js}"></script>
+	<script th:src="@{https://cdn.jsdelivr.net/npm/sweetalert2@11.10.8/dist/sweetalert2.all.min.js}"></script>
       <script th:src="@{js/pedidos.js}"></script>
 	<body>
 		
@@ -18,24 +19,24 @@
 			<div  class="alin">       			
       			 <dialog id="dialog">
 				    <form>
-				        <div class="container">
+				        <div class="container text-center">
 				            <div class="row text-center">
 				                <div class="col">
 				                    <h3>Pedido</h3>
 				                    <div class="row">
-				                        <div class="col">
-				                            <img class="img" src="" id="imgP">
+				                        <div class="col ">
+				                            <img class="imgs" src="" id="imgP">
 				                        </div>
-				                        <div class="col text-center">
-				                            <input type="text" id="tipo_de_pan" class="inpp" placeholder="Tipo de pan">
-				                            <input type="text" id="cantidad" class="inpp" placeholder="Cantidad" oninput="calcularMonto()">
-				                            <input type="text" id="costo" class="inpp" placeholder="Costo">
+				                        <div class="col ">
+				                            <input type="text" id="tipo_de_pan" class="inpp text-center" placeholder="Tipo de pan" disabled>
+				                            <input type="text" id="cantidad" class="inpp text-center" placeholder="Cantidad" oninput="calcularMonto()" required>
+				                            <input type="text" id="costo" class="inpp text-center" placeholder="Costo" disabled>
 				                        </div>
 				                    </div>
 				                </div>
 				            </div>
+							<button class="button	text-center" onclick="this.parentElement.close()">Enviar</button>
 				        </div>
-				        <button class="button	text-center" onclick="this.parentElement.close()">Enviar</button>
 				    </form>
 				</dialog>
       			   <input  class="img showButton" src="imajes/puerquito.jpg" type="image" id="puerquito" >			
@@ -66,19 +67,19 @@
           
           <div class="alin"> 
                 <div><label>Direccion</label></div> 
-                <input type="text" th:field="*{direccion}" id="cantidad" class="input" required>
+                <input type="text" th:field="*{direccion}" id="direccion" class="input" required>
                 
             </div>  
           
             <div class="alin"> 
                 <div><label>Cantidad</label></div> 
-                <input type="text" th:field="*{cantidad}" id="cantidad" class="input" required>
-                 <input type="text" th:field="*{tipo_pan}" id="tipo_de_panI" class="input" placeholder="Tipo de pan" required>
+                <input type="text" th:field="*{cantidad}" id="cantidadIn" class="input" required 	onchange="calcularMonto()">
+                 <input type="text" th:field="*{tipo_pan}" id="tipo_de_panIn" class="input" placeholder="Tipo de pan" required 	onchange="calcularMonto()">
             </div>  
             
             <div class="alin" > 
                 <div><label>Costo</label> </div>
-                <input type="text" th:field="*{costo}" id="costo" class="input" required>
+                <input type="text" th:field="*{costo}" id="costoIn" class="input" required>
             </div>
             <div class="alin" > 
                 <div><label>Anticipo</label></div>

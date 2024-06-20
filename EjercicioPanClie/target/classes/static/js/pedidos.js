@@ -66,7 +66,7 @@ $(document).ready(function(){
 function cambiarImagen(inputId, nuevaFuente) {
     const imagenDialog = document.querySelector("#imgP");
     imagenDialog.src = nuevaFuente;
-     document.getElementById("tipo_de_pan").value = inputId;
+     document.getElementById("tipo_de_panIn").value = inputId;
      document.getElementById("tipo_de_pan").value = inputId;
      
       calcularMonto();
@@ -102,9 +102,9 @@ function eliminarPedidos(idPedidos){
         "baguette": 10
     };
 
-	 if (precios[tipoDePan] === undefined || cantidad <= 0) {
+	 if (precios[producto] === undefined || cantidad <= 0) {
 
-                alert("Tipo de pan no reconocido o cantidad inválida.");
+                 Swal.fire("Tipo de pan no reconocido o cantidad inválida.");
 
                 return;
 
@@ -117,7 +117,8 @@ function eliminarPedidos(idPedidos){
         
         // Actualizar el valor del input de costo
         document.getElementById("costo").value = costo;
-         document.getElementById("costo").value = costo;
+         document.getElementById("costoIn").value = costo;
+           document.getElementById("cantidadIn").value = cantidad; 
     } else {
         // Si el producto no está en la lista de precios, mostrar un mensaje de error o manejarlo según sea necesario
         console.error("El producto seleccionado no tiene un precio definido.");
