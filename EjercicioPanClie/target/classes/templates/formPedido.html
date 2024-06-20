@@ -35,7 +35,7 @@
 				                    </div>
 				                </div>
 				            </div>
-							<button class="button	text-center" onclick="this.parentElement.close()">Enviar</button>
+							<button class="button	text-center" onclick="this.parentElement.close(); ventaP();">Enviar</button>
 				        </div>
 				    </form>
 				</dialog>
@@ -72,14 +72,15 @@
             </div>  
           
             <div class="alin"> 
-                <div><label>Cantidad</label></div> 
-                <input type="text" th:field="*{cantidad}" id="cantidadIn" class="input" required 	onchange="calcularMonto()">
-                 <input type="text" th:field="*{tipo_pan}" id="tipo_de_panIn" class="input" placeholder="Tipo de pan" required 	onchange="calcularMonto()">
-            </div>  
+    			<div><label>Cantidad</label></div> 
+    			<input type="text" th:field="*{cantidad}" id="cantidadIn"  class="input" required  >
+    			<div><label>Tipo de pan</label></div> 
+    			<input type="text" th:field="*{tipo_pan}"  id="tipo_de_panIn" class="input" required >
+			</div>
             
             <div class="alin" > 
                 <div><label>Costo</label> </div>
-                <input type="text" th:field="*{costo}" id="costoIn" class="input" required>
+                <input type="text" th:field="*{costo}" id="costoIn" class="input"  required >
             </div>
             <div class="alin" > 
                 <div><label>Anticipo</label></div>
@@ -89,7 +90,7 @@
 				<button type="submit" id="ingreso"> Comprar </button>
 			</div>
 			   
-		</div>
 		</form>
+		</div>
 	</body>
 </html>

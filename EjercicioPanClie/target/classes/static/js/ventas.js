@@ -8,7 +8,7 @@ function eliminarVenta(idVenta){
 		contentType: "application/json",
 		data: JSON.stringify({id:idVenta}),
 		type: "POST",
-		success: function(){window.location.href = 'admin';
+		success: function(){window.location.href = 'admin1';
 
 		}
 

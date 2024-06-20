@@ -5,9 +5,9 @@ $(document).ready(function(){
 			 showButton[i].addEventListener("click", function(){
 			 const alertDialog = document.querySelector("#dialog");
 	        alertDialog.showModal();
-	        const inputId = showButton[i].id
+	        const inputId = showButton[i].id;
 	        let nuevaFuente = "";
-	        let precio = ""
+	        let precio = "";
 	        
 	         // Determinar la nueva fuente de la imagen según el input presionado
             switch (inputId) {
@@ -52,9 +52,9 @@ $(document).ready(function(){
                     nuevaFuente = ""; // Asigna una fuente por defecto si no se encuentra el input
                     break;
             }
-
+		
             // Llamar a la función para cambiar la imagen
-            cambiarImagen(inputId, nuevaFuente);
+            cambiarImagen(inputId, nuevaFuente, precio);
 });
 		}
    
@@ -63,30 +63,21 @@ $(document).ready(function(){
 });
 
 
-function cambiarImagen(inputId, nuevaFuente) {
+function cambiarImagen(inputId, nuevaFuente , precio) {
     const imagenDialog = document.querySelector("#imgP");
     imagenDialog.src = nuevaFuente;
-     document.getElementById("tipo_de_panIn").value = inputId;
-     document.getElementById("tipo_de_pan").value = inputId;
+    document.getElementById("tipo_de_panIn").value = inputId;
+    document.getElementById("tipo_de_pan").value = inputId;
+    document.getElementById("cantidadIn").value = ""; // Reiniciar cantidad si es necesario
      
       calcularMonto();
 }
 
-function eliminarPedidos(idPedidos){
-	
-	$.ajax({
-		url : "/eliminarPedidos",
-		contentType:"application/json",
-		data :JSON.stringify({id:idPedidos}),
-		type : "POST",
-		success:function(){window.location.href = "pedidos"}
-			
-	});
-	
-}
+
 
      function calcularMonto() {
   		var cantidad = parseFloat(document.getElementById("cantidad").value);
+  		
 		var producto = document.getElementById("tipo_de_pan").value.toLowerCase();
 
     // Definir los precios de los productos
@@ -114,15 +105,40 @@ function eliminarPedidos(idPedidos){
    if (precios.hasOwnProperty(producto)) {
         // Calcular el costo multiplicando el precio por la cantidad
         var costo = cantidad * precios[producto];
-        
+       
+       
         // Actualizar el valor del input de costo
         document.getElementById("costo").value = costo;
          document.getElementById("costoIn").value = costo;
-           document.getElementById("cantidadIn").value = cantidad; 
+          document.getElementById("cantidadIn").value = cantidad; 
     } else {
         // Si el producto no está en la lista de precios, mostrar un mensaje de error o manejarlo según sea necesario
         console.error("El producto seleccionado no tiene un precio definido.");
     }
+    
+}
+function eliminarPedidos(idPedidos){
+	
+	$.ajax({
+		url : "/eliminarPedidos",
+		contentType:"application/json",
+		data :JSON.stringify({id:idPedidos}),
+		type : "POST",
+		success:function(){window.location.href = "pedidos"}
+			
+	});
+	
+}
+function ventaP(costo, cantidad, tipo_pan) {
+    $.ajax({
+        url: "/enviarP",
+        contentType: "application/json",
+        data: JSON.stringify(costo, cantidad, tipo_pan),
+        type: "POST", 
+        success: function(response) {
+            window.location.href = "formi"; 
+        } 
+    });
 }
 
  

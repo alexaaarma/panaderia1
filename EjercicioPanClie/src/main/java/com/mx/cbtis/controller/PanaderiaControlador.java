@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -41,6 +42,11 @@ public class PanaderiaControlador {
 		modelo.addAttribute("pedidos", pedidos);
 	 return "formPedido";
  }
+ 
+ @PostMapping("/enviarP")
+	public ResponseEntity<Pedidos> Pedidoss(@RequestBody Pedidos pedidos){
+	    return new ResponseEntity<Pedidos>(pedidos,null,HttpStatus.CREATED);
+	}
  
  @GetMapping("/pedidos")
 	public String getPedido( Model modelo) {

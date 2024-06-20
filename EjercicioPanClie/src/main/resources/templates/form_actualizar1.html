@@ -189,12 +189,12 @@
             <center>
                 <h1> Agregar Registro </h1>
             </center>
-            <input type="hidden" name="id" field="*{id}" />
+            <input type="hidden" name="id" th:field="*{id}" />
             <p>Nombre del cajero:</p>
-            <input type="text" name="cajero" field="*{cajero}" id="cajero" />
+            <input type="text" name="cajero" th:field="*{cajero}" id="cajero" />
             
             <p>Tipo de pan:</p>
-            <select name="tipo_de_pan" field="*{tipo_de_pan}" id="tipo_de_pan">
+            <select name="tipo_de_pan" th:field="*{tipo_de_pan}" id="tipo_de_pan">
                 <option value="puerquito">Puerquitos</option>
                 <option value="concha">Concha</option>
                 <option value="donas">Donas</option>
@@ -207,12 +207,12 @@
             </select>
 
             <p>Cantidad:</p>
-            <input type="number" name="cantidad" field="*{cantidad}" id="cantidad" min="0"/>
-            <input type="hidden" name="monto" field="*{monto}" id="monto"/>
+            <input type="number" name="cantidad" th:field="*{cantidad}" id="cantidad" min="0"/>
+            <input type="hidden" name="monto" th:field="*{monto}" id="monto"/>
             
            <p>Anticipo:</p>
-            <input type="number" name="anticipo" field="*{anticipo}" id="anticipo" min="0" oninput="calcularMonto()"/>
-            <input type="hidden" name="cambio" field="*{cambio}" id="cambio"/>
+            <input type="number" name="anticipo" th:field="*{anticipo}" id="anticipo" min="0" oninput="calcularMonto()"/>
+            <input type="hidden" name="cambio" th:field="*{cambio}" id="cambio"/>
             <button type="submit" onclick="calcularMonto()">Enviar</button>
         </form>
     </div>
