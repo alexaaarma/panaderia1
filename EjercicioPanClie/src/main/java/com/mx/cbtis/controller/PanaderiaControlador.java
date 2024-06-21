@@ -45,7 +45,7 @@ public class PanaderiaControlador {
  
  @PostMapping("/enviarP")
 	public ResponseEntity<Pedidos> Pedidoss(@RequestBody Pedidos pedidos){
-	    return new ResponseEntity<Pedidos>(pedidos,null,HttpStatus.CREATED);
+	    return new ResponseEntity<Pedidos>(pedidos,null,HttpStatus.OK);
 	}
  
  @GetMapping("/pedidos")

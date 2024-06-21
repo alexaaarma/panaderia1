@@ -1,4 +1,8 @@
 $(document).ready(function(){
+		alert(localStorage.getItem("costo"));
+	if(localStorage.getItem("costo") !== null){
+		alert(localStorage.getItem("costo"));
+	}
 	
 	const showButton = document.querySelectorAll(".showButton");
 		for(let i = 0; showButton.length; i++){
@@ -66,10 +70,8 @@ $(document).ready(function(){
 function cambiarImagen(inputId, nuevaFuente , precio) {
     const imagenDialog = document.querySelector("#imgP");
     imagenDialog.src = nuevaFuente;
-    document.getElementById("tipo_de_panIn").value = inputId;
     document.getElementById("tipo_de_pan").value = inputId;
-    document.getElementById("cantidadIn").value = ""; // Reiniciar cantidad si es necesario
-     
+       
       calcularMonto();
 }
 
@@ -79,7 +81,7 @@ function cambiarImagen(inputId, nuevaFuente , precio) {
   		var cantidad = parseFloat(document.getElementById("cantidad").value);
   		
 		var producto = document.getElementById("tipo_de_pan").value.toLowerCase();
-
+    
     // Definir los precios de los productos
     var precios = {
         "puerquito": 5,
@@ -105,12 +107,10 @@ function cambiarImagen(inputId, nuevaFuente , precio) {
    if (precios.hasOwnProperty(producto)) {
         // Calcular el costo multiplicando el precio por la cantidad
         var costo = cantidad * precios[producto];
-       
-       
+              
         // Actualizar el valor del input de costo
         document.getElementById("costo").value = costo;
-         document.getElementById("costoIn").value = costo;
-          document.getElementById("cantidadIn").value = cantidad; 
+        sessionStorage.setItem("costo",costo);
     } else {
         // Si el producto no está en la lista de precios, mostrar un mensaje de error o manejarlo según sea necesario
         console.error("El producto seleccionado no tiene un precio definido.");
@@ -129,16 +129,26 @@ function eliminarPedidos(idPedidos){
 	});
 	
 }
-function ventaP(costo, cantidad, tipo_pan) {
-    $.ajax({
+function ventaP() {
+  /*  $.ajax({
         url: "/enviarP",
         contentType: "application/json",
-        data: JSON.stringify(costo, cantidad, tipo_pan),
+        data: JSON.stringify({
+            costo: document.getElementById("costo").value,
+            cantidad: document.getElementById("cantidad").value, 
+            tipo_pan: document.getElementById("tipo_de_pan").value
+        }),
         type: "POST", 
         success: function(response) {
-            window.location.href = "formi"; 
+            document.getElementById("cantidadIn").value = response.cantidad;
+            document.getElementById("costoIn").value = response.costo;
+            document.getElementById("tipo_panIn").value = response.tipo_pan;
+        
         } 
-    });
+    });*/
+  
+    
+    window.location.href = "formi"; 
 }
 
  
