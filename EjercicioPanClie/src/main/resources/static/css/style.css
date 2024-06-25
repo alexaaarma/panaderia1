@@ -6,6 +6,12 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
+    background-image:  linear-gradient(rgba(0, 0, 0, 0.27), rgba(0, 0, 0, 0.27)), url("https://crehana-blog.imgix.net/media/filer_public/27/60/276084aa-2dfd-4113-bfae-5f2eb0b966c8/panaderia-artesanal.jpg?auto=format&q=50"); 
+	 background-repeat: no-repeat;
+	 
+	 background-size: cover;
+	 background-position: center;
+	 background-attachment: fixed;
 }
 
 .container {
@@ -20,7 +26,7 @@ h1 {
 .option {
     width: 250px; /* Ancho del cuadro */
     height: 250px; /* Altura del cuadro */
-    background-color: #e67e22; /* Color naranja */
+    background-color: #927756; /* Color naranja */
     margin: 20px;
     border-radius: 20px;
     overflow: hidden; /* Para esconder el desbordamiento de la imagen */
