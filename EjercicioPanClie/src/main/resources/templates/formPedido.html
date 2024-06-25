@@ -61,7 +61,7 @@
             </div> 
             <div class="alin"> 
                 <div> <label >Dia del pedido</label>  <label class="espacios"> Dia de entrega </label>  </div>
-                <input type="date" th:field="*{dia_pedido}" id="pedido" class="date" required>
+                <input type="date" th:field="*{dia_pedido}" id="pedido" class="date" required onclick="setFechaActual()">
                 <input type="date" th:field="*{dia_entrega}" id="entrega" class="date" required>
             </div> 
           
@@ -71,14 +71,14 @@
                 
             </div>  
           
-            <div class="alin"> 
+            <div class="alin"  > 
     			<div><label>Cantidad</label></div> 
-    			<input type="text" th:field="*{cantidad}" id="cantidadIn"  class="input" required  >
+    			<input type="text" th:field="*{cantidad}" id="cantidadIn"   onmousemove="ventaP();" class="input" required  >
     			<div><label>Tipo de pan</label></div> 
     			<input type="text" th:field="*{tipo_pan}"  id="tipo_de_panIn" class="input" required >
 			</div>
             
-            <div class="alin" > 
+            <div class="alin" onmousemove="ventaP()" > 
                 <div><label>Costo</label> </div>
                 <input type="text" th:field="*{costo}" id="costoIn" class="input"  required >
             </div>

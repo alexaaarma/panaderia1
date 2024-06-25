@@ -1,8 +1,4 @@
 $(document).ready(function(){
-		alert(localStorage.getItem("costo"));
-	if(localStorage.getItem("costo") !== null){
-		alert(localStorage.getItem("costo"));
-	}
 	
 	const showButton = document.querySelectorAll(".showButton");
 		for(let i = 0; showButton.length; i++){
@@ -110,7 +106,9 @@ function cambiarImagen(inputId, nuevaFuente , precio) {
               
         // Actualizar el valor del input de costo
         document.getElementById("costo").value = costo;
-        sessionStorage.setItem("costo",costo);
+        localStorage.setItem("costo",costo);
+          localStorage.setItem("cantidad",cantidad);
+            localStorage.setItem("tipo_de_pan",producto);
     } else {
         // Si el producto no está en la lista de precios, mostrar un mensaje de error o manejarlo según sea necesario
         console.error("El producto seleccionado no tiene un precio definido.");
@@ -130,25 +128,17 @@ function eliminarPedidos(idPedidos){
 	
 }
 function ventaP() {
-  /*  $.ajax({
-        url: "/enviarP",
-        contentType: "application/json",
-        data: JSON.stringify({
-            costo: document.getElementById("costo").value,
-            cantidad: document.getElementById("cantidad").value, 
-            tipo_pan: document.getElementById("tipo_de_pan").value
-        }),
-        type: "POST", 
-        success: function(response) {
-            document.getElementById("cantidadIn").value = response.cantidad;
-            document.getElementById("costoIn").value = response.costo;
-            document.getElementById("tipo_panIn").value = response.tipo_pan;
-        
-        } 
-    });*/
   
-    
-    window.location.href = "formi"; 
+   document.getElementById("tipo_de_panIn").value = localStorage.getItem("producto");
+   document.getElementById("costoIn").value =  localStorage.getItem("costo");
+   document.getElementById("cantidadIn").value = localStorage.getItem("cantidad");
+    //window.location.href = "formi"; 
 }
-
+ function setFechaActual() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0');
+            const day = String(now.getDate()).padStart(2, '0');
+            document.getElementById('pedido').value = `${year}-${month}-${day}`;
+        }
  
